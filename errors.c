@@ -10,8 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* Modificada para que devuelva un long int y detectarlo después como un error*/
-long int ft_atoi_long(const char *nptr)
+/* Para transformar los argumentos dados a núumeros (pudiendo ser mallores que
+int)*/
+long int	ft_atoi_long(const char *nptr)
 {
 	long int	n;
 	long int	s;
@@ -24,14 +25,35 @@ long int ft_atoi_long(const char *nptr)
 			s = -1;
 		nptr++;
 	}
-	if (*nprt >='9' || *prtr <= '0')
-		return(2147483648)
+	if (*nptr >= '9' || *nptr <= '0')
+		return (2147483648);
 	while (*nptr <= '9' && *nptr >= '0')
 	{
 		n = n * 10 + *nptr - '0';
 		nptr++;
 	}
 	if (*nptr != 0)
-		return(2147483648)
+		return (2147483648);
 	return (n * s);
+}
+
+/* Comprueba si hay repeticiones entre los argumentos.*/
+int	ft_check_repeat(int *ar, int size)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < size)
+	{
+		j = i + 1;
+		while (j < size)
+		{
+			if (ar[j] == ar[i])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }
