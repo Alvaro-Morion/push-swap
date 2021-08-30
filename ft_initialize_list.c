@@ -30,9 +30,27 @@ void	ft_sort_int_tab(int tab[], int size)
     	}
 	}
 }
-
-// Initialize stack a y sorts the array
-/*t_list  *ft_initialize_stack(int **args, int size)
+// Asigns an ordered and euqally spaced index to each number
+int	ft_get_index(int num, int order[])
 {
-	return(0);
-}*/
+	int i;
+	i = 0;
+	while (order[i] != num)
+		i++;
+	return(i);
+}
+// Creates the stack with the indices corresponding to the arguments given
+t_list	*ft_initialize_stack(int args[], int order[], int size)
+{
+	t_list *stack;
+	int i;
+	stack = NULL;
+	i = 0;
+	ft_sort_int_tab(order, size);
+	while(i < size)
+	{
+		ft_lstadd_back(&stack, ft_new_element(args[i], order));
+		i++;
+	}
+	return(stack);
+}

@@ -12,6 +12,7 @@
 
 /* Para transformar los argumentos dados a núumeros (pudiendo ser mallores que
 int)*/
+#include<stdio.h>
 long int	ft_atoi_long(const char *nptr)
 {
 	long int	n;
@@ -25,7 +26,7 @@ long int	ft_atoi_long(const char *nptr)
 			s = -1;
 		nptr++;
 	}
-	if (*nptr >= '9' || *nptr <= '0')
+	if (*nptr > '9' || *nptr < '0')
 		return (2147483648);
 	while (*nptr <= '9' && *nptr >= '0')
 	{
@@ -44,7 +45,7 @@ int	ft_check_repeat(int *ar, int size)
 	int	j;
 
 	i = 0;
-	while (i < size)
+	while (i < size - 1)
 	{
 		j = i + 1;
 		while (j < size)
