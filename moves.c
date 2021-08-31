@@ -54,3 +54,10 @@ void	ft_rev_rotate(t_list **stack)
 }
 
 //Moves first element of origin to first place in dest.
+void	ft_push(t_list **start, t_list **dest)
+{
+	t_list *temp;
+	temp = *start;
+	*start = (*start)->next;
+	ft_lstadd_front(dest, temp);
+}

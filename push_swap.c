@@ -12,6 +12,16 @@
 
 #include "push_swap.h"
 #include <stdio.h>
+void ft_restart_push(t_list *stack)
+{
+	t_list *ptr;
+	ptr = stack;
+	while(ptr)
+	{
+		ptr->push = 0;
+		ptr = ptr->next;
+	}
+}
 int ft_set_push(t_list *stack_a)
 {
 	int n;
@@ -21,6 +31,7 @@ int ft_set_push(t_list *stack_a)
 
 	n = 0;
 	c = 0;
+	ft_restart_push(stack_a);
 	while(!stack_a->head)
 	{
 		ft_rotate(&stack_a);
@@ -52,7 +63,7 @@ void	ft_swap_stack(t_list *stack_a, int pmax)
 	t_list *ptr;
 	int np;
 	ptr = stack_a;
-	while(ptr->next)
+	while(ptr && ptr->next)
 	{
 		if (ptr->push && !(ptr->next->push))
 		{
@@ -77,7 +88,7 @@ void	ft_swapper(t_list **stack)
 
 	mark = 0;
 	ptr = *stack;
-	while(ptr->next)
+	while(ptr)
 	{
 		if (ptr->swap)
 		{
@@ -93,26 +104,41 @@ void	ft_swapper(t_list **stack)
 			ptr = *stack;
 		}
 		ptr = ptr->next;
-		mark++; 
+		mark++;
 	}
+	ft_restart_push(*stack);
+	ft_set_push(*stack);
 }
+
 void    ft_push_swap(t_list *stack_a, int argc)
 {
 	(void)argc;
 	int pmax;
-	t_list *ptr;
+	//t_list *ptr;
 	pmax = ft_set_push(stack_a);
-	ft_swap_stack(stack_a, pmax);
-	ft_swapper(&stack_a);
-	printf("Indice, push, swap:\n");
+	/*printf("Inicial\n");
 	ptr = stack_a;
-	while(ptr->next)
+	while(ptr)
 	{
 		printf("%d %d %d\n", ptr->index, ptr->push, ptr->swap);
 		ptr = ptr->next;
-	}
-	printf("%d %d %d\n", ptr->index, ptr->push, ptr->swap);
+	}*/
+	ft_swap_stack(stack_a, pmax);
 	
-	
-	ft_set_push(stack_a);
+	/*printf("Antes de push\n");
+	ptr = stack_a;
+	while(ptr)
+	{
+		printf("%d %d %d\n", ptr->index, ptr->push, ptr->swap);
+		ptr = ptr->next;
+	}*/
+	ft_swapper(&stack_a);
+	ft_pusher(&stack_a);
+	ft_align(&stack_a, argc - 1);
+	/*ptr = stack_a;
+	while(ptr)
+	{
+		printf("%d %d %d\n", ptr->index, ptr->push, ptr->swap);
+		ptr = ptr->next;
+	}*/
 }

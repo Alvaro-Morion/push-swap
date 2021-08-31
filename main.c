@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	int args[argc - 1];
 	int order[argc - 1];
 	t_list *stack_a;
+	//t_list *ptr;
 
 	// Gestión de errores y crea el array a ordenar.
 	i = 1;
@@ -29,7 +30,7 @@ int	main(int argc, char **argv)
 	}
 	if (argc < 2 || i < argc || ft_check_repeat(args, argc - 1))
 		exit(write(1, "Error\n", 6));
-	// forma la lista del stack a y la oLrdena normaalmente para asignar los índices.
+	// forma la lista del stack a y la ordena normaalmente para asignar los índices.
 	stack_a = ft_initialize_stack(args, order, argc - 1);
 	// Ordena el stack y devuelve las instrucciones.
 	ft_push_swap(stack_a, argc);

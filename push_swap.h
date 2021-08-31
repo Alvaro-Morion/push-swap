@@ -30,12 +30,16 @@ int         ft_get_index(int num, int order[]);
 t_list 		*ft_new_element(int content, int order[]);
 void 		ft_lstadd_front(t_list **list, t_list *new);
 void 		ft_lstadd_back(t_list **list, t_list *new);
+void        ft_lstadd_front(t_list **list, t_list *new);
 t_list      *ft_lstlast(t_list *lst);
 void        ft_swap(t_list **stack);
 void        ft_rotate(t_list **stack);
 void        ft_rev_rotate(t_list **stack);
+void        ft_push(t_list **start, t_list **dest);
 void        ft_push_swap(t_list *stack_a, int argc);
 int         ft_set_push(t_list *stack_a);
 void        ft_set_swap(t_list *stack_a, int pmax);
+void        ft_pusher(t_list **stack);
+void        ft_align(t_list **stack, int size);
 void        ft_write_iter(int n, char *text);
 #endif
