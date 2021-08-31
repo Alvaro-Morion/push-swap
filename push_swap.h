@@ -14,13 +14,12 @@
 # define PUSH_SWAP_H
 # include<unistd.h>
 # include<stdlib.h>
+# include<limits.h>
 typedef  struct s_list
 {
-    int index;
-	int head;
-    int swap;
-	int push;
-    struct s_list *next;
+	int index;
+	int move;
+	struct s_list *next;
 } t_list;
 long int	ft_atoi_long(const char *nptr);
 int			ft_check_repeat(int *ar, int size);
@@ -33,6 +32,8 @@ void        ft_lstadd_back(t_list **list, t_list *new);
 t_list      *ft_lstlast(t_list *lst);
 void        ft_swap(t_list **stack);
 void        ft_rotate(t_list **stack);
-void        ft_rev_roate(t_list **stack);
+void        ft_rev_rotate(t_list **stack);
 void        ft_push(t_list **start, t_list **dest);
+int         ft_ordered(t_list *stack);
+void		ft_bubble_a(t_list **stack, int size);
 #endif

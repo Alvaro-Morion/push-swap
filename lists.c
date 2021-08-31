@@ -12,6 +12,17 @@
 
 #include "push_swap.h"
 
+void ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+}
 t_list	*ft_new_element(int num, int order[])
 {
 	t_list	*nl;
@@ -20,12 +31,7 @@ t_list	*ft_new_element(int num, int order[])
 	if (!nl)
 		return (NULL);
 	nl->index = ft_get_index(num, order);
-	if (nl->index)
-		nl->head = 0;
-	else 
-		nl->head = 1;
-	nl->swap = 0;
-	nl->push = 0;
+	nl->move = 0;
 	nl->next = NULL;
 	return (nl);
 }

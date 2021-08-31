@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	int args[argc - 1];
 	int order[argc - 1];
 	t_list *stack_a;
-	//t_list *ptr;
+	t_list *ptr;
 
 	// Gestión de errores y crea el array a ordenar.
 	i = 1;
@@ -32,6 +32,25 @@ int	main(int argc, char **argv)
 		exit(write(1, "Error\n", 6));
 	// forma la lista del stack a y la ordena normaalmente para asignar los índices.
 	stack_a = ft_initialize_stack(args, order, argc - 1);
-	// Ordena el stack y devuelve las instrucciones.
-	return(0);
+	ptr = stack_a;
+	printf("primera pila\n");
+		while(ptr)
+		{
+			printf("%d\n", ptr->index);
+			ptr = ptr->next;
+		}
+	if (ft_ordered(stack_a))
+		return (0);
+	else if (argc < 5)
+		ft_sort_23(&stack_a, argc - 1);
+	ptr = stack_a;
+	printf("Nueva pila\n");
+		while(ptr)
+		{
+			printf("%d\n", ptr->index);
+			ptr = ptr->next;
+		}
+	/*else
+		algo_big(stack_a, argc -1);*/
+	return (0);
 }
