@@ -33,5 +33,5 @@ int	main(int argc, char **argv)
 	// forma la lista del stack a y la ordena normaalmente para asignar los índices.
 	stack_a = ft_initialize_stack(args, order, argc - 1);
 	// Ordena el stack y devuelve las instrucciones.
-	ft_push_swap(stack_a, argc);
+	return(0);
 }
