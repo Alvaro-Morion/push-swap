@@ -39,5 +39,5 @@ void        ft_rev_rotate(t_list **stack);
 void        ft_push(t_list **start, t_list **dest);
 int			ft_is_ordered(t_list *stack);
 int			ft_max_len(t_list *stack_a);
-void		ft_radix_sort(t_list **stack_a, int maxlen);
+void		ft_radix_sort(t_list **stack_a, int maxlen, int size);
 #endif

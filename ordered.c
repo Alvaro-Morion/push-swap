@@ -38,7 +38,7 @@ int ft_max_len(t_list *stack_a)
     return(max);
 }
 
-void    ft_radix_sort(t_list **stack_a, int maxlen)
+void    ft_radix_sort(t_list **stack_a, int maxlen, int size)
 {
     t_list *ptr;
     t_list **stack_b;
@@ -52,16 +52,10 @@ void    ft_radix_sort(t_list **stack_a, int maxlen)
     while (i <= maxlen)
     {
         ptr = *stack_a;
-        while(ptr)
+        while(mark < size)
         {
             if (i > ptr->len || ptr->binary[ptr->len - i] == '0')
             {
-                while(mark > 0)
-                {
-                    ft_rotate(stack_a);
-                    write(1, "ra\n", 3);
-                    mark--;
-                }
                 ft_push(stack_a, stack_b);
 				write(1, "pb\n", 3);
 				ptr = *stack_a;
@@ -69,9 +63,11 @@ void    ft_radix_sort(t_list **stack_a, int maxlen)
             }
             else
             {
-				mark++;
-				ptr = ptr->next;
+				write(1, "ra\n", 3);
+				ft_rotate(stack_a);
+				ptr = *stack_a;
 			}
+			mark++;
         }
 		mark = 0;
 		/*printf("stack a tras pb\n");

@@ -18,7 +18,7 @@ int	main(int argc, char **argv)
 	int args[argc - 1];
 	int order[argc - 1];
 	t_list *stack_a;
-	t_list *ptr;
+	//t_list *ptr;
 
 	// Gestión de errores y crea el array a ordenar.
 	i = 1;
@@ -40,12 +40,12 @@ int	main(int argc, char **argv)
 	}*/
 	if (ft_is_ordered(stack_a))
 		return(0);
-	ft_radix_sort(&stack_a, ft_max_len(stack_a));
-	ptr = stack_a;
+	ft_radix_sort(&stack_a, ft_max_len(stack_a), argc - 1);
+	/*ptr = stack_a;
 	while(ptr)
 	{
 		printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
 		ptr = ptr->next;
-	}
+	}*/
 	return(0);
 }
