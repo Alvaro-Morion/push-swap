@@ -46,6 +46,8 @@ void    ft_radix_sort(t_list **stack_a, int maxlen, int size)
     int mark;
 
     stack_b = malloc(sizeof(t_list *));
+    if (!stack_b)
+        exit(1);
 	*stack_b = NULL;
     mark = 0;
     i = 1;
@@ -70,20 +72,6 @@ void    ft_radix_sort(t_list **stack_a, int maxlen, int size)
 			mark++;
         }
 		mark = 0;
-		/*printf("stack a tras pb\n");
-		ptr = *stack_a;
-	    while(ptr)
-	    {
-		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
-	       	ptr = ptr->next;
-	    }
-		ptr = *stack_b;
-		printf("stack b tras pb\n");
-	    while(ptr)
-	    {
-		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
-	        ptr = ptr->next;
-	    }*/
 		ptr = *stack_b;
        	while (ptr)
         {
@@ -91,21 +79,9 @@ void    ft_radix_sort(t_list **stack_a, int maxlen, int size)
     		write (1, "pa\n", 3);
             ptr = *stack_b;
         }
-		/*printf("stack a tras pa\n");
-		ptr = *stack_a;
-	    while(ptr)
-	    {
-		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
-	       	ptr = ptr->next;
-	    }
-		ptr = *stack_b;
-		printf("stack b tras pa\n");
-	    while(ptr)
-	    {
-		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
-	        ptr = ptr->next;
-	    }
-        printf("i: %d\n", i);*/
+		if (ft_is_ordered(*stack_a))
+            break;
 		i++;
 	}
+    free(stack_b);
 }

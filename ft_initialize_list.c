@@ -44,7 +44,7 @@ char *ft_to_binary(int n)
 		i++;
 		num = num / 2;
 	}
-	bin = malloc(i + 1);
+	bin = malloc(sizeof(char) * (i + 2));
 	num = i;
 	while(i > -1)
 	{
