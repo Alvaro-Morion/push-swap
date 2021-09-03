@@ -15,10 +15,12 @@
 # include<unistd.h>
 # include<stdlib.h>
 # include<limits.h>
+
 typedef  struct s_list
 {
 	int index;
-	int move;
+	char *binary;
+	int len;
 	struct s_list *next;
 } t_list;
 long int	ft_atoi_long(const char *nptr);
@@ -27,6 +29,7 @@ t_list      *ft_initialize_stack(int args[], int order[], int size);
 int         ft_get_index(int num, int order[]);
 void        ft_sort_int_tab(int tab[], int size);
 t_list      *ft_new_element(int num, int order[]);
+char		*ft_to_binary(int n);
 void        ft_lstadd_front(t_list **list, t_list *new);
 void        ft_lstadd_back(t_list **list, t_list *new);
 t_list      *ft_lstlast(t_list *lst);
@@ -34,6 +37,7 @@ void        ft_swap(t_list **stack);
 void        ft_rotate(t_list **stack);
 void        ft_rev_rotate(t_list **stack);
 void        ft_push(t_list **start, t_list **dest);
-int         ft_ordered(t_list *stack);
-void		ft_bubble_a(t_list **stack, int size);
+int			ft_is_ordered(t_list *stack);
+int			ft_max_len(t_list *stack_a);
+void		ft_radix_sort(t_list **stack_a, int maxlen);
 #endif

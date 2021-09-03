@@ -32,25 +32,20 @@ int	main(int argc, char **argv)
 		exit(write(1, "Error\n", 6));
 	// forma la lista del stack a y la ordena normaalmente para asignar los índices.
 	stack_a = ft_initialize_stack(args, order, argc - 1);
+	/*ptr = stack_a;
+	while(ptr)
+	{
+		printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
+		ptr = ptr->next;
+	}*/
+	if (ft_is_ordered(stack_a))
+		return(0);
+	ft_radix_sort(&stack_a, ft_max_len(stack_a));
 	ptr = stack_a;
-	printf("primera pila\n");
-		while(ptr)
-		{
-			printf("%d\n", ptr->index);
-			ptr = ptr->next;
-		}
-	if (ft_ordered(stack_a))
-		return (0);
-	else if (argc < 5)
-		ft_sort_23(&stack_a, argc - 1);
-	ptr = stack_a;
-	printf("Nueva pila\n");
-		while(ptr)
-		{
-			printf("%d\n", ptr->index);
-			ptr = ptr->next;
-		}
-	/*else
-		algo_big(stack_a, argc -1);*/
-	return (0);
+	while(ptr)
+	{
+		printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
+		ptr = ptr->next;
+	}
+	return(0);
 }

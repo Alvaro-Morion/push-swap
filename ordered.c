@@ -1,0 +1,115 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ordered.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: amorion- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/09/03 10:04:56 by amorion-          #+#    #+#             */
+/*   Updated: 2021/09/03 10:04:58 by amorion-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+#include <stdio.h>
+int ft_is_ordered (t_list *stack)
+{
+    t_list *ptr;
+
+    ptr = stack;
+    while(ptr->next && ptr->next->index - ptr->index == 1)
+        ptr = ptr->next;
+    if (ptr->next)
+        return(0);
+    return(1);
+}
+int ft_max_len(t_list *stack_a)
+{
+    int max;
+    t_list *ptr;
+    ptr = stack_a;
+    max = ptr->len;
+    while(ptr)
+    {
+        if (ptr->len > max)
+            max = ptr->len;
+        ptr = ptr->next;
+    }
+    return(max);
+}
+
+void    ft_radix_sort(t_list **stack_a, int maxlen)
+{
+    t_list *ptr;
+    t_list **stack_b;
+    int i;
+    int mark;
+
+    stack_b = malloc(sizeof(t_list *));
+	*stack_b = NULL;
+    mark = 0;
+    i = 1;
+    while (i <= maxlen)
+    {
+        ptr = *stack_a;
+        while(ptr)
+        {
+            if (i > ptr->len || ptr->binary[ptr->len - i] == '0')
+            {
+                while(mark > 0)
+                {
+                    ft_rotate(stack_a);
+                    write(1, "ra\n", 3);
+                    mark--;
+                }
+                ft_push(stack_a, stack_b);
+				write(1, "pb\n", 3);
+				ptr = *stack_a;
+                
+            }
+            else
+            {
+				mark++;
+				ptr = ptr->next;
+			}
+        }
+		mark = 0;
+		/*printf("stack a tras pb\n");
+		ptr = *stack_a;
+	    while(ptr)
+	    {
+		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
+	       	ptr = ptr->next;
+	    }
+		ptr = *stack_b;
+		printf("stack b tras pb\n");
+	    while(ptr)
+	    {
+		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
+	        ptr = ptr->next;
+	    }*/
+		ptr = *stack_b;
+       	while (ptr)
+        {
+        	ft_push(stack_b, stack_a);
+    		write (1, "pa\n", 3);
+            ptr = *stack_b;
+        }
+		/*printf("stack a tras pa\n");
+		ptr = *stack_a;
+	    while(ptr)
+	    {
+		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
+	       	ptr = ptr->next;
+	    }
+		ptr = *stack_b;
+		printf("stack b tras pa\n");
+	    while(ptr)
+	    {
+		    printf("%d, %s, %d\n", ptr->index, ptr->binary, ptr->len);
+	        ptr = ptr->next;
+	    }
+        printf("i: %d\n", i);*/
+		i++;
+	}
+}

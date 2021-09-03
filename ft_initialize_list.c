@@ -26,9 +26,34 @@ void	ft_sort_int_tab(int tab[], int size)
 			temp = tab[i];
     		tab[i] = tab[i + 1];
     		tab[i + 1] = temp;
-    		i = 0;           
+    		i = 0;
     	}
 	}
+}
+// Converts index to binary
+char *ft_to_binary(int n)
+{
+	int i;
+	int num;
+	char *bin;
+
+	i = 0;
+	num = n;
+	while(num / 2)
+	{
+		i++;
+		num = num / 2;
+	}
+	bin = malloc(i + 1);
+	num = i;
+	while(i > -1)
+	{
+		bin[i] = n % 2 + '0';
+		n = n / 2;
+		i--;
+	}
+	bin[num + 1] = 0;
+	return(bin);
 }
 // Asigns an ordered and euqally spaced index to each number
 int	ft_get_index(int num, int order[])

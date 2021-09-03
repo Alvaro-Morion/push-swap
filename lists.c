@@ -11,17 +11,14 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void ft_putstr(char *str)
+int ft_strlen(char *str)
 {
 	int i;
 
 	i = 0;
 	while(str[i])
-	{
-		write(1, &str[i], 1);
 		i++;
-	}
+	return (i);
 }
 t_list	*ft_new_element(int num, int order[])
 {
@@ -31,7 +28,8 @@ t_list	*ft_new_element(int num, int order[])
 	if (!nl)
 		return (NULL);
 	nl->index = ft_get_index(num, order);
-	nl->move = 0;
+	nl->binary = ft_to_binary(nl->index);
+	nl->len = ft_strlen(nl->binary);
 	nl->next = NULL;
 	return (nl);
 }

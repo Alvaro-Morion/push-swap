@@ -57,6 +57,7 @@ void	ft_rev_rotate(t_list **stack)
 void	ft_push(t_list **start, t_list **dest)
 {
 	t_list *temp;
+	
 	temp = *start;
 	*start = (*start)->next;
 	ft_lstadd_front(dest, temp);
