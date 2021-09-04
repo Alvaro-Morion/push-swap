@@ -12,7 +12,6 @@
 
 /* Para transformar los argumentos dados a núumeros (pudiendo ser mallores que
 int)*/
-#include<stdio.h>
 long int	ft_atoi_long(const char *nptr)
 {
 	long int	n;

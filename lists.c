@@ -11,15 +11,17 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
-int ft_strlen(char *str)
+
+int	ft_strlen(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 		i++;
 	return (i);
 }
+
 t_list	*ft_new_element(int num, int order[])
 {
 	t_list	*nl;
@@ -55,13 +57,14 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 }
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
 	t_list	*ptr;
+
 	ptr = lst;
 	if (!ptr)
-		return(NULL);
+		return (NULL);
 	while (ptr->next)
 		ptr = ptr->next;
-	return(ptr);
+	return (ptr);
 }
