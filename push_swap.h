@@ -25,7 +25,7 @@ typedef struct s_list
 }	t_list;
 long int	ft_atoi_long(const char *nptr);
 int			ft_check_repeat(int *ar, int size);
-t_list		*ft_initialize_stack(int args[], int order[], int size);
+t_list		*ft_initialize_stack(int **args, int **order, int size);
 int			ft_get_index(int num, int order[]);
 void		ft_sort_int_tab(int tab[], int size);
 t_list		*ft_new_element(int num, int order[]);
@@ -43,4 +43,9 @@ void		ft_radix_sort(t_list **stack_a, int maxlen, int size);
 void		ft_sort_small(t_list **stack_a, int size);
 void		ft_perform_rotation(t_list **stack_a, t_list *ptr, int mark,
 				int size);
+char		**ft_split(char const *s, char c);
+int			ft_nword(char const *s, char c);
+void		ft_free_split(char **argv);
+void		ft_free_stack(t_list **stack);
+void		ft_free_array(int *args, int *order);
 #endif

@@ -70,18 +70,20 @@ int	ft_get_index(int num, int order[])
 }
 
 // Creates the stack with the indices corresponding to the arguments given
-t_list	*ft_initialize_stack(int args[], int order[], int size)
+t_list	*ft_initialize_stack(int **args, int **order, int size)
 {
 	t_list	*stack;
 	int		i;
 
 	stack = NULL;
 	i = 0;
-	ft_sort_int_tab(order, size);
+	ft_sort_int_tab(*order, size);
 	while (i < size)
 	{
-		ft_lstadd_back(&stack, ft_new_element(args[i], order));
+		ft_lstadd_back(&stack, ft_new_element(*(*args + i), *order));
 		i++;
 	}
+	free(*order);
+	free(*args);
 	return (stack);
 }
