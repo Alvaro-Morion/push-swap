@@ -59,39 +59,41 @@ void	ft_sort_3(t_list **stack)
 
 void	ft_insert(t_list **stack_a, t_list **stack_b, int szb)
 {
-	int min;
-	int max;
+	int	min;
+	int	max;
+
 	min = (*stack_a)->index;
 	max = ft_lstlast(*stack_a)->index;
-
-	while(szb)
+	while (szb)
 	{
-		if ((*stack_a)->index > (*stack_b)->index && ft_lstlast(*stack_a)->index < (*stack_b)->index)
+		if ((*stack_a)->index > (*stack_b)->index
+			&& ft_lstlast(*stack_a)->index < (*stack_b)->index)
 		{
 			write(1, "pa\n", 3);
 			ft_push(stack_b, stack_a);
-			szb--;
 		}
-		else if ((*stack_b)->index < min && (*stack_a)->index == min)
+		else if (((*stack_b)->index < min || (*stack_b)->index > max)
+			&& (*stack_a)->index == min)
 		{
+// Nueva funcion ft_insert_extreme
 			write(1, "pa\n", 3);
 			ft_push(stack_b, stack_a);
-			min = (*stack_a)->index;
-			szb--;
-		}
-		else if ((*stack_b)->index > max && (*stack_a)->index == min)
-		{
-			write(1, "pa\nra\n", 6);
-			ft_push(stack_b, stack_a);
-			max = (*stack_a)->index;
-			ft_rotate(stack_a);
-			szb--;
+			if ((*stack_a)->index < min)
+				min = (*stack_a)->index;
+			else
+			{
+				write(1, "ra\n", 3);
+				ft_rotate(stack_a);
+				max = (*stack_a)->index;
+			}
 		}
 		else
 		{
 			write(1, "ra\n", 3);
 			ft_rotate(stack_a);
+			szb++;
 		}
+		szb--;
 	}
 }
 

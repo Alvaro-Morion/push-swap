@@ -65,7 +65,7 @@ void	ft_push(t_list **start, t_list **dest)
 	*start = (*start)->next;
 	ft_lstadd_front(dest, temp);
 }
-
+// Decides wether it is beter to rotate or to rev rotate and performs the operation.
 void	ft_perform_rotation(t_list **stack_a, t_list *ptr, int mark, int size)
 {
 	if (mark <= size / 2)
