@@ -59,19 +59,32 @@ void	ft_sort_3(t_list **stack)
 
 void	ft_insert(t_list **stack_a, t_list **stack_b, int szb)
 {
-	int	max;
-	int	min;
-
+	int min;
+	int max;
 	min = (*stack_a)->index;
 	max = ft_lstlast(*stack_a)->index;
-	while (szb)
+
+	while(szb)
 	{
-		if ((*stack_a)->index - 1 == (*stack_b)->index
-			|| ft_lstlast(*stack_a)->index + 1 == (*stack_b)->index
-			|| ((*stack_b)->index > max && (*stack_a)->index == min))
+		if ((*stack_a)->index > (*stack_b)->index && ft_lstlast(*stack_a)->index < (*stack_b)->index)
 		{
-			ft_push(stack_b, stack_a);
 			write(1, "pa\n", 3);
+			ft_push(stack_b, stack_a);
+			szb--;
+		}
+		else if ((*stack_b)->index < min && (*stack_a)->index == min)
+		{
+			write(1, "pa\n", 3);
+			ft_push(stack_b, stack_a);
+			min = (*stack_a)->index;
+			szb--;
+		}
+		else if ((*stack_b)->index > max && (*stack_a)->index == min)
+		{
+			write(1, "pa\nra\n", 6);
+			ft_push(stack_b, stack_a);
+			max = (*stack_a)->index;
+			ft_rotate(stack_a);
 			szb--;
 		}
 		else
