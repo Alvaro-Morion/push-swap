@@ -50,7 +50,7 @@ void	ft_choose_algo(t_list *stack_a, int argc)
 {
 	if (ft_is_ordered(stack_a))
 		return ;
-	else if (argc < 7)
+	else if (argc < 27)
 		ft_sort_small(&stack_a, argc - 1);
 	else
 		ft_radix_sort(&stack_a, ft_max_len(stack_a), argc - 1);

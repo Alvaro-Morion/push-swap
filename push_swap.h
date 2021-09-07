@@ -48,4 +48,6 @@ int			ft_nword(char const *s, char c);
 void		ft_free_split(char **argv);
 void		ft_free_stack(t_list **stack);
 void		ft_free_array(int *args, int *order);
+void		ft_insert_extreme(t_list **stack_a, t_list **stack_b, int *min,
+				int *max);
 #endif

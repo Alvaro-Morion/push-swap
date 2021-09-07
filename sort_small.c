@@ -74,19 +74,7 @@ void	ft_insert(t_list **stack_a, t_list **stack_b, int szb)
 		}
 		else if (((*stack_b)->index < min || (*stack_b)->index > max)
 			&& (*stack_a)->index == min)
-		{
-// Nueva funcion ft_insert_extreme
-			write(1, "pa\n", 3);
-			ft_push(stack_b, stack_a);
-			if ((*stack_a)->index < min)
-				min = (*stack_a)->index;
-			else
-			{
-				write(1, "ra\n", 3);
-				ft_rotate(stack_a);
-				max = (*stack_a)->index;
-			}
-		}
+			ft_insert_extreme(stack_a, stack_b, &min, &max);
 		else
 		{
 			write(1, "ra\n", 3);
